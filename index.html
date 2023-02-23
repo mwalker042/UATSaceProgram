@@ -27,41 +27,47 @@
         <p>Test of the paragraph tags.</p>
 
         <!-- Placeholder buttons -->
-        <button type="button">Start</button><button type="button">Stop</button>
+        <button type="button" id="startCountdown">Start</button><button type="button" id="stopCountdown">Stop</button>
 
         <h1 id="DisplayCountdown"></h1>
         <!-- Countdown script -->
         <script language="javascript" type="text/javascript">
-            // Countdown function
-            function Countdown()
+            // Variable to store interval ID
+            let intervalID;
+            let countdown = 10;
+
+            function beginCountdown()
             {
-                --countdown;
+                // Check if an interval has already been set up
+                if (!intervalID)
+                {
+                    intervalID = setInterval(countdownFunc, 1000);
+                    if (countdown === 0)
+                    {
+                        document.getElementById("DisplayCountdown").innerHTML = "Blastoff!";
+                    }
+                }
+            }
+
+            function countdownFunc()
+            {
                 document.getElementById("DisplayCountdown").innerHTML = countdown + " seconds";
+                countdown--;
             }
 
-            // Blastoff function
-            function Blastoff()
+            function stopCountdown()
             {
-                --countdown;
-                document.getElementById("DisplayCountdown").innerHTML = "Blastoff!";
+                clearInterval(intervalID);
+                // Release interval ID from variable
+                intervalID = null;
+
+                // Print halt message and reset countdown to 10
+                document.getElementById("DisplayCountdown").innerHTML = "Countdown halted!";
+                countdown = 10;
             }
 
-            // Declare and set countdown variable
-            var countdown = 10;
-
-            // Declare and set initial value for interval
-            var interval = 1000;
-
-            // Display start of countdown
-            document.getElementById("DisplayCountdown").innerHTML = countdown + " seconds";
-
-            for (var i = 10; i >0; --i)
-            {
-                setTimeout(function() { Countdown(); }, interval);
-
-                interval += 1000;
-            }
-            setTimeout(function() { Blastoff(); }, interval);
+            document.getElementById("startCountdown").addEventListener("click", beginCountdown);
+            document.getElementById("stopCountdown").addEventListener("click", stopCountdown);
         </script>
 
         <p id="localTime"></p>
