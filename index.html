@@ -9,8 +9,23 @@
     <HEAD>
         <!-- Sets the title at top of window -->
        <title>UAT Space Program - Michael Walker</title>
+
+       <style type="text/css">
+            body {
+                text-align: center;
+            }
+
+            #warning {
+                color: red;
+            }
+       </style>
     </HEAD>
     <BODY>
+        <p id="localTime"></p>
+
+        <!-- Link the external JavaScript file code.js -->
+        <script type="text/javascript" src="code.js"></script>
+
         <!-- Image source is in same folder as index.html -->
         <img src="UATspaceLogo-2.jpg">
 
@@ -42,17 +57,29 @@
                 if (!intervalID)
                 {
                     intervalID = setInterval(countdownFunc, 1000);
-                    if (countdown === 0)
-                    {
-                        document.getElementById("DisplayCountdown").innerHTML = "Blastoff!";
-                    }
                 }
             }
 
             function countdownFunc()
             {
-                document.getElementById("DisplayCountdown").innerHTML = countdown + " seconds";
-                countdown--;
+                if (countdown < 5)  // Run the following when countdown is less than 5 seconds from blastoff
+                {
+                    document.getElementById("DisplayCountdown").innerHTML = "<span id='warning'>Warning!</span> Less than half way to launch: " + countdown + " seconds";
+                    countdown--;
+                }
+                else                // Run the following when countdown is not less than 5 seconds from blastoff
+                {
+                    document.getElementById("DisplayCountdown").innerHTML = countdown + " seconds";
+                    countdown--;
+                }
+
+                if (countdown < -1) // Clear the intervalID and display Blastoff! when countdown reaches 0
+                {
+                    clearInterval(intervalID);
+                    intervalID = null;
+
+                    document.getElementById("DisplayCountdown").innerHTML = "Blastoff!";
+                }
             }
 
             function stopCountdown()
@@ -66,13 +93,9 @@
                 countdown = 10;
             }
 
+            // Add event listeners for the start and stop buttons
             document.getElementById("startCountdown").addEventListener("click", beginCountdown);
             document.getElementById("stopCountdown").addEventListener("click", stopCountdown);
         </script>
-
-        <p id="localTime"></p>
-
-        <!-- Link the external JavaScript file code.js -->
-        <script type="text/javascript" src="code.js"></script>
     </BODY>
  </HTML>
