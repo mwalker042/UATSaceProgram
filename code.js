@@ -99,6 +99,7 @@ document.getElementById("name").innerHTML = employeeName;
 // Script for countdown functions
 //-------------------------------
 
+/*
 // Variable to store interval ID
 let intervalID;
 let countdown = 10;
@@ -144,6 +145,31 @@ function stopCountdown()
     document.getElementById("DisplayCountdown").innerHTML = "Countdown halted!";
     countdown = 10;
 }
+*/
+
+function startButton()
+{
+    // Disables and lowers the opacity of the start button
+    document.getElementById("start").disabled = true;
+    document.getElementById("start").style.opacity = "0.7";
+
+    // Enables and raises the opacity of the stop button
+    document.getElementById("stop").disabled = false;
+    document.getElementById("stop").style.opacity = "1";
+
+}
+
+function stopButton()
+{
+    // Enables and raises the opacity of the start button
+    document.getElementById("start").disabled = false;
+    document.getElementById("start").style.opacity = "1";
+
+    // Disables and lowers the opacity of the stop button
+    document.getElementById("stop").disabled = true;
+    document.getElementById("stop").style.opacity = "0.7";
+}
+
 // Add event listeners for the start and stop buttons
-document.getElementById("startCountdown").addEventListener("click", beginCountdown);
-document.getElementById("stopCountdown").addEventListener("click", stopCountdown);
+document.getElementById("start").addEventListener("click", startButton);
+document.getElementById("stop").addEventListener("click", stopButton);
