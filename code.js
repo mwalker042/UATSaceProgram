@@ -50,8 +50,8 @@ function isNumeric(num) {
 
 while (!validName) {
     // Show prompts for first and last name
-    let firstName = prompt("Please enter first:");
-    let lastName = prompt("Please enter last name:");
+    let firstName = prompt("Enter first name:");
+    let lastName = prompt("Enter last name:");
 
     // Concatenate first and last name
     var employeeName = firstName + " " + lastName;
