@@ -67,6 +67,10 @@ body {
     outline: 0;
 }
 
+.button-12:hover {
+    background: #4C4E52;
+}
+
 table, th, td {
     border: 0px solid;
     border-collapse: collapse;
@@ -76,11 +80,28 @@ table, th, td {
     width: 500px;
 }
 
-#headline {
+.headline {
     color: #FFFFFF;
     background: #4C4E52;
 }
 
-#rowHighlight {
+.rowHighlight {
     background: #EEEEEE;
+}
+
+.rowHighlight:hover {
+    background: #8f8f8fb0;
+}
+
+.rowLowlight:hover {
+    background: #8f8f8fb0;
+}
+
+.data:hover {
+    background: #636363b0;
+}
+
+#audio {
+    padding-top: 10px;
+    padding-bottom: 1px;
 }

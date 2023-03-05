@@ -96,6 +96,43 @@ while (!validBadge) {
 document.getElementById("name").innerHTML = employeeName;
 
 //-------------------------------
+// Script for background audio
+//-------------------------------
+
+var audio = new Audio('us-lab-background.mp3');
+
+function startButton()
+{
+    // Disables and lowers the opacity of the start button
+    document.getElementById("start").disabled = true;
+    document.getElementById("start").style.opacity = "0.7";
+
+    // Enables and raises the opacity of the stop button
+    document.getElementById("stop").disabled = false;
+    document.getElementById("stop").style.opacity = "1";
+
+    audio.loop = true;
+    audio.play();
+}
+
+function stopButton()
+{
+    // Enables and raises the opacity of the start button
+    document.getElementById("start").disabled = false;
+    document.getElementById("start").style.opacity = "1";
+
+    // Disables and lowers the opacity of the stop button
+    document.getElementById("stop").disabled = true;
+    document.getElementById("stop").style.opacity = "0.7";
+
+    audio.pause();
+}
+
+// Add event listeners for the start and stop buttons
+document.getElementById("start").addEventListener("click", startButton);
+document.getElementById("stop").addEventListener("click", stopButton);
+
+//-------------------------------
 // Script for countdown functions
 //-------------------------------
 
@@ -146,30 +183,3 @@ function stopCountdown()
     countdown = 10;
 }
 */
-
-function startButton()
-{
-    // Disables and lowers the opacity of the start button
-    document.getElementById("start").disabled = true;
-    document.getElementById("start").style.opacity = "0.7";
-
-    // Enables and raises the opacity of the stop button
-    document.getElementById("stop").disabled = false;
-    document.getElementById("stop").style.opacity = "1";
-
-}
-
-function stopButton()
-{
-    // Enables and raises the opacity of the start button
-    document.getElementById("start").disabled = false;
-    document.getElementById("start").style.opacity = "1";
-
-    // Disables and lowers the opacity of the stop button
-    document.getElementById("stop").disabled = true;
-    document.getElementById("stop").style.opacity = "0.7";
-}
-
-// Add event listeners for the start and stop buttons
-document.getElementById("start").addEventListener("click", startButton);
-document.getElementById("stop").addEventListener("click", stopButton);
