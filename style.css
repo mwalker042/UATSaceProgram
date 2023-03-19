@@ -105,3 +105,16 @@ table, th, td {
     padding-top: 10px;
     padding-bottom: 1px;
 }
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: green;
+}
+
+a:active {
+    color: red;
+}
